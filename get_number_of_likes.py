@@ -4,7 +4,7 @@ import urllib.request
 def get_number_of_likes(media_code):
     url = "https://www.instagram.com/p/" + media_code
     request = urllib.request.Request(url)
-    response = urllib.request.urlopen(request)
+    response = urllib.request.urlopen(request,timeout=10)
 
     webpage = response.read().decode('utf-8')
     tag = webpage.find("_iuf51 _oajsw")
@@ -28,13 +28,13 @@ def get_number_of_likes(media_code):
 
 def try_media_likes(media_code, max_try):
     for i in range(max_try):
-        result = get_number_of_likes(media_code)
-        if result[0] == "ok":
-            return result[1]
+        try:
+            # print("try " + str(i))
+            result = get_number_of_likes(media_code)
+            if result[0] == "ok":
+                return result
+        except:
+            print("Exception")
     return result
-
-
-print(try_media_likes("yj8stAm2Sk", 100))
-print(try_media_likes("BR7Ru5Rhst6", 100))
 
 

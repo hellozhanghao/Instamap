@@ -3,10 +3,37 @@ from get_number_of_likes import try_media_likes
 start = 1
 end = 20
 
-
-
 fin = open("instagram_media_data_cleaned.csv",'r')
+fout = open("number_of_likes_"+str(start)+"-"+str(end)+".csv", 'w')
 
 line = fin.readline()
+
+count = 0
+
 while line != '':
-    
+
+    if count < start:
+        line = fin.readline()
+        count += 1
+    else:
+        if count == end+1:
+            break
+        info = line.split(',')
+        info[2] = info[2][:-1]
+
+        response = try_media_likes(info[1], max_try=10)
+        if response[0] == 'ok':
+            info.append(response[1])
+        else:
+            info.append("Error-"+str(response[1]))
+
+        print(count, info)
+        fout.write(info[0]+","+info[1]+","+info[2]+","+info[3]+'\n')
+
+        line = fin.readline()
+        count += 1
+
+    #
+    # info = line.split(",")
+    # print(info[0],info[1])
+    # line = fin.readline()
