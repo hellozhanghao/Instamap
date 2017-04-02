@@ -27,6 +27,7 @@ def get_number_of_likes(media_code):
 
 
 def try_media_likes(media_code, max_try):
+    result = "error",4
     for i in range(max_try):
         try:
             # print("try " + str(i))
