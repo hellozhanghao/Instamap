@@ -1,10 +1,10 @@
 from get_number_of_likes import try_media_likes
 
-start = 1
-end = 20
+start = 17001
+end   = 18000
 
 fin = open("instagram_media_data_cleaned.csv",'r')
-fout = open("number_of_likes_"+str(start)+"-"+str(end)+".csv", 'w')
+fout = open("media_data/number_of_likes_"+str(start)+"-"+str(end)+".csv", 'w')
 
 line = fin.readline()
 
