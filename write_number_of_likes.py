@@ -23,7 +23,7 @@ while line != '':
 
         response = try_media_likes(info[1], max_try=10)
         if response[0] == 'ok':
-            info.append(response[1])
+            info.append(response[1].replace(",",""))
         else:
             info.append("Error-"+str(response[1]))
 
@@ -32,8 +32,3 @@ while line != '':
 
         line = fin.readline()
         count += 1
-
-    #
-    # info = line.split(",")
-    # print(info[0],info[1])
-    # line = fin.readline()
