@@ -2,7 +2,7 @@ from geopy.geocoders import Nominatim
 
 geolocator = Nominatim()
 
-fin = open("instagram_locations.csv", "r", encoding='utf-8', errors='ignore')
+fin = open("id_name.csv", "r", encoding='utf-8', errors='ignore')
 fout = open("locations_coordinates.csv", "w")
 
 line = fin.readline()
