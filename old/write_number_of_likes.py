@@ -1,4 +1,4 @@
-from get_number_of_likes import try_media_likes
+from old.get_number_of_likes import try_media_likes
 
 start = 60001
 end   = 60199
